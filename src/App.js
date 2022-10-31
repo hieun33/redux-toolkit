@@ -1,4 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
+import { fetchYoutube } from './redux/youtubeSlice';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 //common
 import Header from './components/common/Header';
@@ -20,6 +23,12 @@ import Youtube from './components/sub/Youtube';
 
 import './scss/style.scss';
 function App() {
+	const dispatch = useDispatch();
+
+	useEffect(()=>{
+		dispatch(fetchYoutube());
+	})
+	
 	return (
 		<>
 			{/* Switch는 같은 경로의 라우터 연결시 구체적인 라우터 하나만 적용한다 */}
